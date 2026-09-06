@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blog - SwasthyaSalah</title><link rel="stylesheet" href="style.css"></head><body>
+<header><div class="logo"><img src="logo.png">SwasthyaSalah</div><a href="index.html" style="color:#fff" data-t="home">होम</a><select id="language-select" class="lang" onchange="changeLanguage(this.value)"><option value="hi">हिन्दी</option><option value="en">USA English</option><option value="en-GB">UK English</option></select></header>
+<div class="container"><h1 data-t="blog_title">Blog</h1><p data-t="add_info"></p><br><div id="blogList" class="grid"></div></div>
+<script>
+const BLOG_DATA=[
+ {hi:{t:"1. तुलसी के फायदे",d:"तुलसी खांसी, सर्दी, बुखार और इम्युनिटी के लिए सबसे अच्छी है। रोज सुबह 5 पत्ते चबाएं।"},en:{t:"1. Benefits of Tulsi",d:"Tulsi is best for cough, cold, fever and immunity. Chew 5 leaves daily."},"en-GB":{t:"1. Benefits of Tulsi",d:"Tulsi is best for cough, cold and immunity. We favour it daily."}},
+ {hi:{t:"2. हल्दी वाला दूध",d:"रात में हल्दी वाला दूध पीने से जोड़ों का दर्द और सूजन कम होती है।"},en:{t:"2. Turmeric Milk Benefits",d:"Turmeric milk at night reduces joint pain and swelling."},"en-GB":{t:"2. Turmeric Milk Benefits",d:"Turmeric milk at night reduces joint pain and swelling."}},
+ {hi:{t:"3. जीरा पानी से वजन कम",d:"सुबह खाली पेट जीरा पानी पीने और 30 मिनट टहलने से वजन कम होता है।"},en:{t:"3. Cumin Water for Weight Loss",d:"Drinking cumin water on empty stomach and walking 30 minutes reduces weight."},"en-GB":{t:"3. Cumin Water for Weight Loss",d:"Drinking cumin water on empty stomach reduces weight."}},
+ {hi:{t:"4. एलोवेरा जेल त्वचा के लिए",d:"एलोवेरा जेल चेहरे के दाग-धब्बे और मुंहासों के लिए प्राकृतिक उपाय है।"},en:{t:"4. Aloe Vera for Skin",d:"Aloe vera gel is a natural remedy for face spots and pimples."},"en-GB":{t:"4. Aloe Vera for Skin",d:"Aloe vera gel is a natural remedy for face spots."}},
+ {hi:{t:"5. करेला मधुमेह में",d:"करेला जूस और मेथी दाना मधुमेह में बहुत फायदेमंद है।"},en:{t:"5. Bitter Gourd for Diabetes",d:"Bitter gourd juice and fenugreek seeds are beneficial in diabetes."},"en-GB":{t:"5. Bitter Gourd for Diabetes",d:"Bitter gourd juice and fenugreek seeds are beneficial in diabetes."}}
+ // NAYA ARTICLE YAHAN ADD KARO - is pattern me 3 language me likhna hai
+ // {hi:{t:"6. Naya Title Hindi",d:"Description Hindi"},en:{t:"6. New Title EN",d:"Description EN"},"en-GB":{t:"6. New Title UK",d:"Description UK"}}
+];
+function renderBlog(lang){
+ const l=lang||localStorage.getItem('lang')||'hi';
+ document.getElementById('blogList').innerHTML=BLOG_DATA.map(b=>`<div class="card"><h3>${b[l].t}</h3><p>${b[l].d}</p></div>`).join('');
+}
+</script>
+<script src="lang.js"></script></body></html>
