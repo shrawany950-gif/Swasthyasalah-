@@ -1,0 +1,16 @@
+{
+  "name": "SwasthyaSalah - 20000+ Gharelu Nuskhe",
+  "short_name": "SwasthyaSalah",
+  "description": "20000+ Home Remedies by Shrawan Yadav, Kondagaon, Chhattisgarh",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a5c36",
+  "theme_color": "#0a5c36",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
