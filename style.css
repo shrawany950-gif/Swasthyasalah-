@@ -1,20 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#f6fef8;color:#222;line-height:1.6}
-header{background:#0a5c36;color:#fff;padding:12px 4%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:9999}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:21px}
-.logo img{width:45px;height:45px;border-radius:50%;background:#fff;object-fit:cover;border:2px solid #fff}
-nav a{color:#fff;text-decoration:none;margin:0 8px;font-weight:600;font-size:14px}
-.lang{padding:8px 14px;border-radius:20px;border:none;font-weight:700;cursor:pointer;background:#fff;color:#0a5c36}
-.hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding:40px 4%;background:#fff}
-.hero-text{flex:1;min-width:280px}
-.hero img{width:100%;max-width:560px;border-radius:20px;box-shadow:0 15px 30px rgba(0,0,0,.18);object-fit:cover}
-.hero h1{font-size:38px;color:#0a5c36;line-height:1.2}
-.hero p{margin:14px 0;color:#555;font-size:17px}
-.btn{background:#0a5c36;color:#fff;padding:12px 28px;border-radius:30px;text-decoration:none;border:none;font-weight:700;cursor:pointer;display:inline-block}
-.container{padding:25px 4%}
-.card{background:#fff;padding:18px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.07);margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-footer{background:#071a11;color:#cbd5e1;text-align:center;padding:24px;margin-top:30px;font-size:13px}
-footer a{color:#6ee7b7;text-decoration:none;margin:0 6px}
-input,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:10px;margin:8px 0;font-size:15px}
+:root{--primary:#0f9d8a;--dark:#0b3d36;--bg:#f7fdfc}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,system-ui,sans-serif}
+body{background:var(--bg);color:#12202a;line-height:1.7}
+header{position:sticky;top:0;z-index:99;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 4%;box-shadow:0 2px 10px rgba(0,0,0,.06);flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--dark);font-size:20px}
+.logo img{width:42px;height:42px;border-radius:12px;object-fit:cover;background:#fff}
+nav{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:#222;font-weight:500;font-size:14px}
+nav a:hover{color:var(--primary)}
+#langSelect{padding:7px 12px;border-radius:20px;border:1px solid #bde}
+.hero{display:grid;grid-template-columns:1.1fr.9fr;gap:20px;padding:40px 6%;align-items:center;background:linear-gradient(120deg,#e6fffa,#fff)}
+.hero h1{font-size:40px;line-height:1.2;color:var(--dark)}
+.searchBox{display:flex;gap:8px;margin-top:18px}
+.searchBox input{flex:1;padding:14px 18px;border-radius:30px;border:1.5px solid #bde}
+.btn{padding:12px 22px;border-radius:30px;border:none;background:var(--primary);color:#fff;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--dark)}
+.heroImg img{width:100%;height:390px;object-fit:cover;border-radius:24px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:30px 6%}
+.card{background:#fff;padding:20px;border-radius:18px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+footer{background:var(--dark);color:#cfe;padding:30px 6%;text-align:center;margin-top:40px}
+.blogGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;padding:20px 6%}
+.article{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.article img{width:100%;height:180px;object-fit:cover}
+.article.p{padding:14px}
+.chatWrap{max-width:900px;margin:20px auto;background:#fff;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.08);overflow:hidden}
+.chatMsgs{height:60vh;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f6fffe}
+.msg{padding:12px 14px;border-radius:14px;max-width:85%}
+.msg.user{background:var(--primary);color:#fff;align-self:flex-end}
+.msg.bot{background:#e6fffa;align-self:flex-start;border:1px solid #bde}
+.chatInput{display:flex;gap:8px;padding:12px;border-top:1px solid #eee}
+.chatInput input{flex:1;padding:12px;border-radius:24px;border:1px solid #ccc}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.heroImg img{height:250px}}
