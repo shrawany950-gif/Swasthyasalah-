@@ -1,15 +1,11 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Chatbot</title><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/style.css"></head>
-<body>
-<header class="nav"><div class="brand"><img src="/logo.png"><span>SwasthyaSalah</span></div><select id="langSwitcher"><option value="hi">हिन्दी</option><option value="en-US">USA English</option><option value="en-GB">UK English</option></select></header>
-<div class="chat-wrap"><div id="ans"></div><div class="inp"><input id="q" data-t="ph" placeholder="अपनी समस्या लिखें"><button id="sendBtn" data-t="send" onclick="ask()">भेजें</button></div></div>
-<script src="/healthdata.js"></script><script src="/lang.js"></script>
-<script>
-function ask(){
- let v=document.getElementById("q").value.toLowerCase(); let lang=localStorage.getItem("lang")||"hi"; if(!v) return;
- let f=window.HEALTH_DB.filter(x=> v.split(" ").some(w=> x.key.includes(w))).slice(0,6);
- let box=document.getElementById("ans");
- if(f.length==0){box.innerHTML=`<div class='msg'>${lang=='hi'?'माफ करें, दूसरा शब्द लिखें जैसे सर्दी, बुखार':'Please try words like cold, fever'}</div>`; return;}
- box.innerHTML=f.map(r=>`<div class='msg'><b>${r.key}</b><p>${lang=='hi'?r.hi:r.en}</p></div>`).join("");
-}
-</script>
-</body></html>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chatbot - Swasthya Salah</title><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="logo"><img src="/logo.png"><span>SwasthyaSalah</span></div><nav><a href="/index.html" data-t="home">होम</a><a href="/chatbot.html" data-t="chat">चैटबॉट</a><select id="langSel" class="lang-select"><option value="hi">हिंदी</option><option value="en_us">USA English</option><option value="en_gb">UK English</option></select></nav></header>
+<div class="container"><div class="card"><h1 data-t="chat_title">स्वास्थ्य चैटबॉट - 21000+</h1><div id="chatbox" class="chatbox"></div><div style="display:flex;gap:8px;margin-top:10px"><input id="qin" data-tp="chat_placeholder" placeholder="जैसे: सर्दी का घरेलू उपाय..."><button class="btn" onclick="ask()">Send</button></div><p style="font-size:12px;margin-top:8px">Offline | 21000+ | No API | 3 Languages</p></div></div>
+<script src="/healthdata.js"></script><script>
+const box=document.getElementById('chatbox');
+function addMsg(t,cl){let d=document.createElement('div');d.className='msg '+cl;d.innerText=t;box.appendChild(d);box.scrollTop=box.scrollHeight;}
+function resetChat(){box.innerHTML='';const l=localStorage.getItem('sw_lang')||'hi';let w=l==='hi'?translations.hi.chat_welcome:l==='en_gb'?translations.en_gb.chat_welcome:translations.en_us.chat_welcome;addMsg(w,'bot');}
+function ask(){let q=document.getElementById('qin').value.trim();if(!q)return;addMsg(q,'user');let l=localStorage.getItem('sw_lang')||'hi';let a=findAnswer(q,l);setTimeout(()=>addMsg(a,'bot'),300);document.getElementById('qin').value='';}
+document.getElementById('qin').addEventListener('keydown',e=>{if(e.key==='Enter')ask();});
+document.addEventListener('DOMContentLoaded',resetChat);
+</script><script src="/lang.js"></script><script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script></body></html>
