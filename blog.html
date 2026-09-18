@@ -1,14 +1,16 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Blog</title><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/style.css"></head>
-<body>
-<header class="nav"><div class="brand"><img src="/logo.png"><span>SwasthyaSalah</span></div><select id="langSwitcher"><option value="hi">हिन्दी</option><option value="en-US">USA English</option><option value="en-GB">UK English</option></select></header>
-<div id="blog" class="cards"></div>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blog - Swasthya Salah</title><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="logo"><img src="/logo.png"><span>SwasthyaSalah</span></div><nav><a href="/index.html" data-t="home">होम</a><a href="/blog.html" data-t="blog">ब्लॉग</a><a href="/calculator.html" data-t="calculator">कैलकुलेटर</a><a href="/chatbot.html" data-t="chat">चैटबॉट</a><select id="langSel" class="lang-select"><option value="hi">हिंदी</option><option value="en_us">USA English</option><option value="en_gb">UK English</option></select></nav></header>
+<div class="container"><div class="card"><h1 data-t="blog_title">स्वास्थ्य लेख</h1><p data-t="blog_add_tip">नया लेख जोड़ने के लिए नीचे articles array में जोड़ें - 3 भाषाओं में</p></div><div id="blogList" class="grid"></div></div>
 <script>
-const articles = [
- {hi_t:"तुलसी के फायदे", en_t:"Benefits of Tulsi", hi_d:"तुलसी सर्दी खांसी में बहुत फायदेमंद है...", en_d:"Tulsi is very beneficial for cold and cough..."},
- {hi_t:"आंवला क्यों खाएं", en_t:"Why Eat Amla", hi_d:"आंवला विटामिन C का राजा है...", en_d:"Amla is king of Vitamin C..."}
- // NAYA ARTICLE YAHAN ADD KARO - bas is format me copy paste karo
+const articles=[
+{id:1,title_hi:"हल्दी के 10 फायदे",title_us:"10 Benefits of Turmeric",title_gb:"10 Benefits of Turmeric",desc_hi:"सूजन कम करती है",desc_us:"Reduces inflammation",desc_gb:"Reduces inflammation",content_hi:"रात में हल्दी दूध पिएं। घाव में लगाएं।",content_us:"Drink turmeric milk at night. Apply on wounds.",content_gb:"Drink turmeric milk at night. Apply on wounds."},
+{id:2,title_hi:"तुलसी क्यों जरूरी",title_us:"Why Tulsi is Important",title_gb:"Why Tulsi is Important",desc_hi:"इम्यूनिटी बढ़ाती है",desc_us:"Boosts immunity",desc_gb:"Boosts immunity",content_hi:"रोज 5 पत्ते चबाएं।",content_us:"Chew 5 leaves daily.",content_gb:"Chew 5 leaves daily."},
+{id:3,title_hi:"मधुमेह उपाय",title_us:"Diabetes Remedies",title_gb:"Diabetes Remedies",desc_hi:"करेला जामुन",desc_us:"Bitter gourd jamun",desc_gb:"Bitter gourd jamun",content_hi:"करेला जूस सुबह लें।",content_us:"Take bitter gourd juice morning.",content_gb:"Take bitter gourd juice morning."},
+{id:4,title_hi:"वजन घटाना",title_us:"Weight Loss",title_gb:"Weight Loss",desc_hi:"नींबू पानी",desc_us:"Lemon water",desc_gb:"Lemon water",content_hi:"सुबह नींबू शहद पानी।",content_us:"Lemon honey water.",content_gb:"Lemon honey water."},
+{id:5,title_hi:"अश्वगंधा",title_us:"Ashwagandha",title_gb:"Ashwagandha",desc_hi:"तनाव कम",desc_us:"Reduces stress",desc_gb:"Reduces stress",content_hi:"दूध के साथ रात में।",content_us:"With milk at night.",content_gb:"With milk at night."}
 ];
-function renderBlog(){let l=localStorage.getItem("lang")||"hi"; document.getElementById("blog").innerHTML=articles.map(a=>`<div class='card'><h3>${l=='hi'?a.hi_t:a.en_t}</h3><p>${l=='hi'?a.hi_d:a.en_d}</p></div>`).join("");}
-</script>
-<script src="/lang.js"></script><script>setTimeout(renderBlog,300); setInterval(renderBlog,1000);</script>
-</body></html>
+// नया article जोड़ने का तरीका: ऊपर array में ऐसे जोड़ो
+// {id:6, title_hi:"...", title_us:"...", title_gb:"...", desc_hi:"...", desc_us:"...", desc_gb:"...", content_hi:"...", content_us:"...", content_gb:"..."},
+function renderBlogs(){const l=localStorage.getItem('sw_lang')||'hi';const list=document.getElementById('blogList');list.innerHTML='';articles.forEach(a=>{let t=l==='hi'?a.title_hi:l==='en_gb'?a.title_gb:a.title_us;let d=l==='hi'?a.desc_hi:l==='en_gb'?a.desc_gb:a.desc_us;let c=l==='hi'?a.content_hi:l==='en_gb'?a.content_gb:a.content_us;list.innerHTML+=`<div class="card"><h3>${t}</h3><p>${d}</p><details><summary>Read more</summary><p style="margin-top:10px">${c}</p></details></div>`})}
+document.addEventListener('DOMContentLoaded',()=>{renderBlogs();document.getElementById('langSel').addEventListener('change',renderBlogs)});
+</script><footer><p>Swasthya Salah</p></footer><script src="/lang.js"></script><script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script></body></html>
