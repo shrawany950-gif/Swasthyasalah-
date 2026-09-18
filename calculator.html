@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width">
+<title>BMI Calculator - SwasthyaSalah</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/logo.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="brand"><img src="/logo.png"><span>SwasthyaSalah</span></div>
+  <nav><a data-t="home" href="/index.html">होम</a><a data-t="blog" href="/blog.html">ब्लॉग</a></nav>
+  <select id="langSwitcher"><option value="hi">हिन्दी</option><option value="en-US">USA English</option><option value="en-GB">UK English</option></select>
+</header>
+<div class="page">
+  <h2 data-t="calc_t">BMI कैलकुलेटर</h2><br>
+  <input id="h" type="number" placeholder="Height (cm) - ऊंचाई" style="width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ccc">
+  <input id="w" type="number" placeholder="Weight (kg) - वजन" style="width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ccc">
+  <button class="btn" onclick="calcBMI()" data-t="calc_b">गणना करें</button>
+  <p id="result" style="margin-top:15px;font-size:1.2rem;font-weight:800;color:#0e8a4c"></p>
+  <p style="margin-top:10px;font-size:0.9rem">Normal BMI: 18.5 - 24.9</p>
+</div>
+<script>
+function calcBMI(){
+ let h=document.getElementById('h').value/100; let w=document.getElementById('w').value;
+ if(!h||!w){alert('Height Weight dalo');return;}
+ let bmi=(w/(h*h)).toFixed(1);
+ let cat = bmi<18.5 ? (localStorage.getItem('lang')=='hi'?'कम वजन':'Underweight') : bmi<24.9 ? (localStorage.getItem('lang')=='hi'?'सामान्य':'Normal') : (localStorage.getItem('lang')=='hi'?'अधिक वजन':'Overweight');
+ document.getElementById('result').innerText = "BMI: "+bmi+" ("+cat+")";
+}
+</script>
+<script src="/lang.js"></script>
+</body>
+</html>
