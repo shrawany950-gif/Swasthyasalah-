@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width">
-<title>Contact Us - SwasthyaSalah</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/logo.png">
-<link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<header class="nav">
-  <div class="brand"><img src="/logo.png"><span>SwasthyaSalah</span></div>
-  <nav><a data-t="home" href="/index.html">होम</a><a data-t="about" href="/about.html">About</a></nav>
-  <select id="langSwitcher"><option value="hi">हिन्दी</option><option value="en-US">USA English</option><option value="en-GB">UK English</option></select>
-</header>
-<div class="page">
-  <h2 data-t="contact_t">संपर्क करें</h2><br>
-  <p><b>Name:</b> Shrawan Yadav<br><b>Email:</b> shrawany950@gmail.com<br><b>State:</b> Chhattisgarh<br><b>District:</b> Kondagaon<br><br></p>
-  <form onsubmit="alert('Thank you! Message sent to Shrawan');return false;">
-    <input type="text" required placeholder="Your Name" style="width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ccc">
-    <input type="email" required placeholder="Your Email" style="width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ccc">
-    <textarea required placeholder="Your Message" rows="4" style="width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ccc"></textarea>
-    <button class="btn" type="submit" data-t="send">भेजें</button>
-  </form>
-</div>
-<script src="/lang.js"></script>
-</body>
-</html>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact - Swasthya Salah</title><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="logo"><img src="/logo.png"><span>SwasthyaSalah</span></div><nav><a href="/index.html" data-t="home">होम</a><a href="/contact.html" data-t="contact">संपर्क</a><select id="langSel" class="lang-select"><option value="hi">हिंदी</option><option value="en_us">USA English</option><option value="en_gb">UK English</option></select></nav></header>
+<div class="container"><div class="card"><h1 data-t="contact_title">संपर्क करें</h1><p><b>Shrawan Yadav</b><br>Email: shrawany950@gmail.com<br>Dist: Kondagaon, Chhattisgarh</p><label data-t="contact_name">नाम</label><input><label data-t="contact_email">ईमेल</label><input><label data-t="contact_msg">संदेश</label><textarea rows="4"></textarea><button class="btn" data-t="contact_send">भेजें</button></div></div>
+<script src="/lang.js"></script></body></html>
