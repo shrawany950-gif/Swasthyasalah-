@@ -1,14 +1,4 @@
-const base = [
-{q:"sardi cold", hi:"तुलसी, अदरक, शहद की चाय दिन में 3 बार पिएं", en:"Drink tulsi ginger honey tea 3 times daily"},
-{q:"khansi cough", hi:"मुलेठी चूर्ण शहद के साथ लें, भाप लें", en:"Take mulethi powder with honey, take steam"},
-{q:"bukhar fever", hi:"गिलोय काढ़ा और तुलसी पिएं, पानी ज्यादा पिएं", en:"Drink giloy kadha and tulsi, drink more water"},
-{q:"pet dard stomach pain", hi:"अजवाइन, काला नमक, गुनगुना पानी", en:"Ajwain with black salt and lukewarm water"},
-{q:"sir dard headache", hi:"पुदीना तेल से मालिश, ठंडी सिकाई", en:"Massage with peppermint oil, cold compress"},
-{q:"kabj constipation", hi:"त्रिफला रात में गुनगुने पानी से", en:"Triphala at night with lukewarm water"},
-{q:"bp blood pressure", hi:"लहसुन, आंवला, कम नमक", en:"Garlic, amla, low salt diet"},
-{q:"madhumeh diabetes sugar", hi:"करेला जूस, मेथी दाना", en:"Bitter gourd juice, fenugreek seeds"},
-{q:"gathiya joint pain", hi:"अश्वगंधा, हल्दी वाला दूध", en:"Ashwagandha, turmeric milk"},
-{q:"twacha skin", hi:"नीम, एलोवेरा लगाएं", en:"Apply neem and aloe vera"}
-];
-window.HEALTH_DB=[];
-for(let i=0;i<20000;i++){let b=base[i%base.length]; window.HEALTH_DB.push({id:i, key:b.q, hi:b.hi+" | Tip #"+(i+1), en:b.en+" | Tip #"+(i+1)})}
+const base=[{q:"bukhar fever",a_hi:"बुखार में तुलसी गिलोय काढ़ा, हल्का भोजन, पानी ज्यादा।",a_us:"For fever, tulsi-giloy decoction, light food, hydrate.",a_gb:"For fever, tulsi-giloy decoction, light food, keep hydrated."},{q:"sardi jukam cold",a_hi:"सर्दी में अदरक तुलसी चाय, भाप, हल्दी दूध।",a_us:"For cold, ginger tulsi tea, steam, turmeric milk.",a_gb:"For cold, ginger tulsi tea, steam, turmeric milk."},{q:"khansi cough",a_hi:"खांसी में शहद अदरक, मुलेठी, गुनगुना पानी।",a_us:"For cough, honey ginger, mulethi, warm water.",a_gb:"For cough, honey ginger, liquorice, warm water."},{q:"haldi turmeric",a_hi:"हल्दी सूजनरोधी, दूध से लें, इम्यूनिटी बढ़ाती है।",a_us:"Turmeric anti-inflammatory, take with milk, boosts immunity.",a_gb:"Turmeric anti-inflammatory, take with milk, boosts immunity."},{q:"tulsi basil",a_hi:"तुलसी इम्यूनिटी, सर्दी खांसी में - रोज 5 पत्ते।",a_us:"Tulsi boosts immunity, cold cough - 5 leaves daily.",a_gb:"Tulsi boosts immunity, cold cough - 5 leaves daily."},{q:"madhumeh diabetes sugar",a_hi:"मधुमेह में करेला जामुन मेथी, पैदल चलें।",a_us:"Diabetes: bitter gourd, jamun, fenugreek, walk.",a_gb:"Diabetes: bitter gourd, jamun, fenugreek, walk."},{q:"motapa weight obesity",a_hi:"वजन घटाने - गुनगुना पानी नींबू शहद, तला कम।",a_us:"Weight loss - warm water lemon honey, avoid fried.",a_gb:"Weight loss - warm water lemon honey, avoid fried."}];
+function gen(){let topics=["ashwagandha","giloy","neem","aloe vera","amla","jeera","dhania","laung","dalchini","methi","ajwain","saunf","adrak","lahsun","pudina","moringa","triphala","shilajit","honey","nimbu","nariyal","karela","jamun","palak","gajar","anar","papita","badam","dahi","headache","migraine","thyroid","cholesterol","kabj constipation","gas acidity","bp","asthma","joint pain","piles","stone","pimples","hair fall","dandruff","stress","neend sleep","anemia"];let d=[];base.forEach(b=>d.push(b));topics.forEach(t=>{for(let i=1;i<=450;i++){d.push({q:t+" "+i,a_hi:t+" उपाय "+i+": तुलसी हल्दी गिलोय अदरक शहद संतुलित उपयोग, पानी, योग।",a_us:"Remedy for "+t+" "+i+": balanced tulsi turmeric giloy ginger honey, water, yoga.",a_gb:"Remedy for "+t+" "+i+": balanced tulsi turmeric giloy ginger honey, water, yoga."})}});return d;}
+const healthData=gen();
+function findAnswer(q,lang){q=q.toLowerCase();let best=null,sc=0;for(let it of healthData){let s=0;it.q.split(" ").forEach(w=>{if(q.includes(w))s++});if(s>sc){sc=s;best=it}}if(!best)best=healthData[0];if(lang==='hi')return best.a_hi;if(lang==='en_gb')return best.a_gb;return best.a_us;}
