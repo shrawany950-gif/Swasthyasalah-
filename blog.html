@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Blog</title><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header class="nav"><div class="brand"><img src="/logo.png"><span>SwasthyaSalah</span></div><select id="langSwitcher"><option value="hi">हिन्दी</option><option value="en-US">USA English</option><option value="en-GB">UK English</option></select></header>
+<div id="blog" class="cards"></div>
+<script>
+const articles = [
+ {hi_t:"तुलसी के फायदे", en_t:"Benefits of Tulsi", hi_d:"तुलसी सर्दी खांसी में बहुत फायदेमंद है...", en_d:"Tulsi is very beneficial for cold and cough..."},
+ {hi_t:"आंवला क्यों खाएं", en_t:"Why Eat Amla", hi_d:"आंवला विटामिन C का राजा है...", en_d:"Amla is king of Vitamin C..."}
+ // NAYA ARTICLE YAHAN ADD KARO - bas is format me copy paste karo
+];
+function renderBlog(){let l=localStorage.getItem("lang")||"hi"; document.getElementById("blog").innerHTML=articles.map(a=>`<div class='card'><h3>${l=='hi'?a.hi_t:a.en_t}</h3><p>${l=='hi'?a.hi_d:a.en_d}</p></div>`).join("");}
+</script>
+<script src="/lang.js"></script><script>setTimeout(renderBlog,300); setInterval(renderBlog,1000);</script>
+</body></html>
