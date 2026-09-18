@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Chatbot</title><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header class="nav"><div class="brand"><img src="/logo.png"><span>SwasthyaSalah</span></div><select id="langSwitcher"><option value="hi">हिन्दी</option><option value="en-US">USA English</option><option value="en-GB">UK English</option></select></header>
+<div class="chat-wrap"><div id="ans"></div><div class="inp"><input id="q" data-t="ph" placeholder="अपनी समस्या लिखें"><button id="sendBtn" data-t="send" onclick="ask()">भेजें</button></div></div>
+<script src="/healthdata.js"></script><script src="/lang.js"></script>
+<script>
+function ask(){
+ let v=document.getElementById("q").value.toLowerCase(); let lang=localStorage.getItem("lang")||"hi"; if(!v) return;
+ let f=window.HEALTH_DB.filter(x=> v.split(" ").some(w=> x.key.includes(w))).slice(0,6);
+ let box=document.getElementById("ans");
+ if(f.length==0){box.innerHTML=`<div class='msg'>${lang=='hi'?'माफ करें, दूसरा शब्द लिखें जैसे सर्दी, बुखार':'Please try words like cold, fever'}</div>`; return;}
+ box.innerHTML=f.map(r=>`<div class='msg'><b>${r.key}</b><p>${lang=='hi'?r.hi:r.en}</p></div>`).join("");
+}
+</script>
+</body></html>
