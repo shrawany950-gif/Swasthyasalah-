@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "name": "SwasthyaSalah - 20000+ Home Remedies",
   "short_name": "SwasthyaSalah",
   "description": "20000+ home remedies by Shrawan Yadav",
@@ -19,6 +20,14 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/hero.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
     }
   ]
 }
